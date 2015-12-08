@@ -70,7 +70,7 @@ tools-to-use
 (get {:a 0 :b 1} :b)
 (get {:a 0 :b 1} :c)
 (get {:a 0 :b 1} :c "puppies")
-(get-in {:a 0 :b {:c "puppies"} [:b :c]})
+(get-in {:a 0 :b {:c "puppies"}} [:b :c])
 ({:name "Razor"} :name)
 
 (:a {:a 1 :b 2 :c 3})
