@@ -106,3 +106,92 @@ tools-to-use
 
 (inc 1.1)
 (map inc [0 1 2 3])
+
+(defn too-cute
+  "Return a cheer for something cute"
+  [thing]
+  (str "That " thing "is too cute!"))
+
+(too-cute "puppy")
+
+(defn x-chop
+  "Neochop"
+  ([name chop]
+    (str "Your " chop " chop inflicts pain on " name "."))
+  ([name]
+   (x-chop name "karate")))
+
+(x-chop "Khan")
+(x-chop "Khan" "slap")
+
+(defn squee
+  [thing]
+  (str "SQUEE! It's a " thing))
+
+(defn squeer
+  [& things]
+  (map squee things))
+
+(squeer "Puppy" "Kitty")
+
+(defn favorite-things
+  [name & things]
+  (str "My name is " name " and I like "
+       (clojure.string/join ", " things)
+       ", etc."))
+
+(favorite-things "Lilly" "puppies" "kitties")
+
+(defn x-first
+  [[first-thing]]
+  first-thing)
+
+(x-first [1 2 3 4])
+
+(defn x-choose
+  [[first-thing second-thing & other-things]]
+  (str first-thing ", " second-thing ", "
+       (clojure.string/join ", " other-things)))
+
+(x-choose ["this" "that" "the other" "the another"])
+
+(defn x-find
+  [{x :horz y :vert}]
+  (println (str "(" x ", " y ")")))
+
+(x-find {:horz 3 :vert -7})
+
+(defn x-finder
+  [{:keys [x y]}]
+  (println (str "(" x ", " y ")")))
+
+(x-finder {:x 4 :y -2})
+
+(defn x-goer
+  [{:keys [x y] :as coor}]
+  (println (str "(" x ", " y ")"))
+  (println coor))
+
+(x-goer {:x 4 :y 2})
+
+(map (fn [name] (str "Hey, " name))
+     ["Dick" "Jane"])
+
+(def three-er (fn [x] (* 3 x)))
+(three-er 11)
+
+(#(* % 3) 8)
+
+(map #(str "Hey, " %)
+     ["Dick" "Jane"])
+
+(#(str %1 " and " %2) "this" "that")
+(#(identity %&) 1 2 3 :yo)
+
+(defn inc-maker
+  "Make a custom incrementor"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc42 (inc-maker 42))
+(inc42 8)
