@@ -211,3 +211,43 @@ tools-to-use
   (if (> itr 3)
     (println "Done")
     (recur (inc itr))))
+
+(seq '(1 2 3))
+(seq [1 2 3])
+(seq #{1 2 3})
+(seq {:a 1 :b 2})
+(into {} (seq {:a 1 :b 2}))
+
+(map str ["a" "b" "c"] ["d" "e" "f"])
+(map + [1 2 3] [-3 2 1])
+
+(def humans   [2.3 4.5 2.4 6.6 7.7])
+(def critters [4.5 6.7 4.3 7.5 3.2])
+(defn unify-diet [human critter] {:human human :critter critter})
+(map unify-diet humans critters)
+
+(def sum #(reduce + %))
+(def avg #(/ (sum %) (count %)))
+(defn stats [numbers] (map #(% numbers) [sum count avg]))
+(stats [3 4 1])
+(stats [3.2 44 53.1 3.11])
+
+(def identities
+  [{:alias "Batman" :real "Bruce Wayne"}
+   {:alias "Spider-Man" :real "Peter Parker"}
+   {:alias "Santa" :real "Your mom"}
+   {:alias "Easter Bunny" :real "Your dad"}])
+
+(map :real identities)
+
+(reduce (fn [new-map [key val]]
+          (assoc new-map key (inc val)))
+        {}
+        {:a 20 :b 30})
+
+(reduce (fn [new-map [key val]]
+          (if (> val 4)
+            (assoc new-map key val)
+            new-map))
+        {}
+        {:a 5 :b 2})
