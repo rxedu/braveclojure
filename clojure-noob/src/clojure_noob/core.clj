@@ -117,7 +117,7 @@ tools-to-use
 (defn x-chop
   "Neochop"
   ([name chop]
-    (str "Your " chop " chop inflicts pain on " name "."))
+   (str "Your " chop " chop inflicts pain on " name "."))
   ([name]
    (x-chop name "karate")))
 
@@ -195,3 +195,19 @@ tools-to-use
 
 (def inc42 (inc-maker 42))
 (inc42 8)
+
+(def x 0)
+(let [x 1] x)
+(let [x (inc x)] x)
+
+(def puppy-list ["Pongo" "Corgi" "Husky"])
+(let [[pongo & puppies] puppy-list]
+  [pongo puppies])
+
+(into [:b] (set [:a :a]))
+
+(loop [itr 0]
+  (println (str "Num " itr))
+  (if (> itr 3)
+    (println "Done")
+    (recur (inc itr))))
