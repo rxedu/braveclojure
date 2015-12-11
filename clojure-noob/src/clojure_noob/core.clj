@@ -313,3 +313,30 @@ tools-to-use
 
 (def warn (partial lousy-logger :warn))
 (warn "Puppies")
+
+; Chapter 5
+
+((comp inc *) 3 5)
+
+(def character {:name "Link" :attrs {:int 10 :str 12 :dex 18}})
+(def c-int (comp :int :attrs))
+(def c-str (comp :str :attrs))
+(def c-dex (comp :dex :attrs))
+(c-int character)
+(c-str character)
+(c-dex character)
+
+(defn spell-slots
+  [char]
+  (int (inc (/ (c-int char) 2))))
+
+(def spell-slots-comp (comp int inc #(/ % 2) c-int))
+(spell-slots-comp character)
+
+(defn sleepy-ident [x] (Thread/sleep 100) x)
+(sleepy-ident "Ant-Man")
+(sleepy-ident "Ant-Man")
+
+(def memo-sleppy-ident (memoize sleepy-ident))
+(memo-sleppy-ident "Ant-Man")
+(memo-sleppy-ident "Ant-Man")
