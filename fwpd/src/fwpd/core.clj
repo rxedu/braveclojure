@@ -34,4 +34,18 @@
   [minimum-glitter records]
   (filter #(>= (:glitter-index %) minimum-glitter) records))
 
-(glitter-filter 3 (mapify (parse (slurp filename))))
+(def suspects (mapify (parse (slurp filename))))
+
+(glitter-filter 3 suspects)
+
+; Chapter 4 Exercises
+
+; 4.1
+(map :name (glitter-filter 3 suspects))
+
+; 4.2
+(defn append
+  [suspects info]
+  (conj suspects (into {} (map vector vampire-keys info))))
+
+(glitter-filter 4 (append suspects ["Katy Perry" 6]))

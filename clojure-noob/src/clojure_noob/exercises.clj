@@ -83,3 +83,5 @@
           [] asym-body-parts))
 
 (symmetrize-n-body-parts asym-alien-parts ["a" "b" "c"])
+
+; Chapter 4 exercises are in the fwpd project.
