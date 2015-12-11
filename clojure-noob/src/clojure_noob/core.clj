@@ -285,3 +285,27 @@ tools-to-use
   ([] (even-numbers 0))
   ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
 (take 10 (even-numbers))
+
+(map identity {:a "b"})
+(into {} (map identity {:a "b"}))
+(into [] (map identity {:a "b"}))
+(into [] (map identity [:a "b"]))
+(into #{} (map identity [:a :b :a]))
+(into {:a 1} [[:b 2]])
+(into [:a] '(:b :c))
+(into {:a 1} {:b 2})
+(conj [0] 1 2 3 4 5)
+
+(max 0 4 5 2)
+(apply max [3 5 3 2 45 4 32])
+(def add10 (partial + 10))
+(add10 20)
+
+(defn lousy-logger
+  [log-level message]
+  (condp = log-level
+    :warn (clojure.string/lower-case message)
+    :emergency (clojure.string/upper-case message)))
+
+(def warn (partial lousy-logger :warn))
+(warn "Puppies")
