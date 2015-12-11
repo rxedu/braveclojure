@@ -49,3 +49,22 @@
   (conj suspects (into {} (map vector vampire-keys info))))
 
 (glitter-filter 4 (append suspects ["Katy Perry" 6]))
+
+; 4.3
+(defn validate
+  [validate-functions record]
+  (every? true? (map (fn [[k v]] (v (k record))) validate-functions)))
+
+(validate {:name (complement nil?) :glitter-index (complement nil?)}
+          (first (append suspects ["Katy Perry" 6])))
+
+; 4.5
+(defn unmapify
+  [maps]
+  (clojure.string/join
+   "\n"
+   (map
+    #((partial clojure.string/join ",") (map % vampire-keys))
+    maps)))
+
+(unmapify suspects)
