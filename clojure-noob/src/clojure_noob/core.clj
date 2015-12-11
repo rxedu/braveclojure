@@ -6,6 +6,8 @@
   [& args]
   (println "I'm a little teapot!"))
 
+; Chapter 3
+
 (+ 1 2 3)
 
 (str "I " "am " "brave.")
@@ -211,6 +213,8 @@ tools-to-use
   (if (> itr 3)
     (println "Done")
     (recur (inc itr))))
+
+; Chapter 4
 
 (seq '(1 2 3))
 (seq [1 2 3])
