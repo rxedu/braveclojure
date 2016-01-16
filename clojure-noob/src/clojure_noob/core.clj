@@ -340,3 +340,23 @@ tools-to-use
 (def memo-sleppy-ident (memoize sleepy-ident))
 (memo-sleppy-ident "Ant-Man")
 (memo-sleppy-ident "Ant-Man")
+
+; Chapter 7
+
+(read-string "(1 + 1)")
+(let [infix (read-string "(1 + 1)")]
+  (list (second infix) (first infix) (last infix)))
+
+(defmacro ignore-last-operand
+  [function-call]
+  (butlast function-call))
+
+(ignore-last-operand (+ 1 2 10))
+
+(defmacro infix
+  [infixed]
+  (list (second infixed)
+        (first infixed)
+        (last infixed)))
+
+(infix (1 + 2))
