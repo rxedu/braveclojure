@@ -85,3 +85,7 @@
 (symmetrize-n-body-parts asym-alien-parts ["a" "b" "c"])
 
 ; Chapter 4 exercises are in the fwpd project.
+
+; 5.1
+(def attr #(comp % :attrs))
+((attr :int) {:name "Link" :attrs {:int 10 :str 12 :dex 18}})
