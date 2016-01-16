@@ -1,6 +1,8 @@
 (ns clojure-noob.exercises
   (:gen-class))
 
+; No exercises for Chapter 1 and Chapter 2.
+
 ; 3.1
 (str "Clap" " Hands")
 (vector 1 2 3)
@@ -89,3 +91,17 @@
 ; 5.1
 (def attr #(comp % :attrs))
 ((attr :int) {:name "Link" :attrs {:int 10 :str 12 :dex 18}})
+
+; 5.2
+; 5.3
+; 5.4
+; 5.5
+
+; No exercises for Chapter 6.
+
+; 7.1
+(eval (list println "Evan" "The Matrix"))
+(eval '(println "Evan" "The Matrix"))
+(eval (read-string "(println \"Evan\" \"The Matrix\")"))
+
+; 7.2
